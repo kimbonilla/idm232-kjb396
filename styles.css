@@ -42,35 +42,35 @@ p, a, input, button {
 h1 {
     font-size: 56px;
     font-weight: 800;
-    line-height: .8;
+    line-height: .85;
     letter-spacing: -2.5%;
 }
 
 h2 {
     font-size: 48px;
     font-weight: 800;
-    line-height: .8;
+    line-height: .85;
     letter-spacing: -2.5%;
 }
 
 h3 {
     font-size: 40px;
     font-weight: 700;
-    line-height: .85;
+    line-height: .9;
     letter-spacing: -2%;
 }
 
 h4 {
     font-size: 32px;
     font-weight: 700;
-    line-height: .85;
+    line-height: .9;
     letter-spacing: -1.75%;
 }
 
 h5 {
     font-size: 24px;
     font-weight: 700;
-    line-height: .85;
+    line-height: .9;
     letter-spacing: -1.5%;
 }
 
@@ -96,7 +96,7 @@ p, a, input {
     font-size: 32px;
     border: 0;
     border-radius: 50%;
-    box-shadow: 0px 5px 5px 0px rgb(0, 0, 0, 0.3);
+    box-shadow: 0px 5px 5px 0px rgb(0, 0, 0, 0.2);
 }
 
 /*help modal*/
@@ -118,7 +118,7 @@ p, a, input {
     width: 80%;
     background-color: var(--cream);
     border-radius: 20px;
-    box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.2);
 }
 
 .help-content button {
@@ -133,7 +133,7 @@ p, a, input {
     font-size: 24px;
     border: 0;
     border-radius: 50%;
-    box-shadow: 0px 3px 3px 0px rgb(0, 0, 0, 0.3);
+    box-shadow: 0px 3px 3px 0px rgb(0, 0, 0, 0.2);
 }
 
 .help-content img {
@@ -143,11 +143,23 @@ p, a, input {
 }
 
 /*logo*/
+.logo {
+    text-align: center;
+    height: fit-content;
+    margin: 25px 0;
+}
+
+.logo a {
+    display: inline-block;
+    height: fit-content;
+    margin: 0;
+}
+
 .logo img{
     display: block;
     width: 750px;
     max-width: 95vw;
-    margin: 25px auto;
+    margin: 0 auto;
     padding: 0 65px;
 }
 
@@ -183,20 +195,21 @@ p, a, input {
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 50px;
+    row-gap: 50px;
     margin: 100px 50px 50px;
 }
 
 .preview-card {
     display: block;
     width: 300px;
-    height: 500px;
+    height: fit-content;
 }
 
 .preview-card img {
     display: block;
     width: 100%;
     border-radius: 15px;
-    box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.2);
 }
 
 .preview-card h3 {
@@ -211,5 +224,53 @@ p, a, input {
     text-align: center;    
     border-radius: 10px;
     text-decoration: none;
-    box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.2);
+}
+
+/*recipes page*/
+.recipes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 50px;
+    row-gap: 50px;
+    margin: 100px 50px 50px;
+}
+
+.recipe-card {
+    display: block;
+    width: 250px;
+    height: fit-content;
+    background-color: var(--light-green);
+    border-radius: 15px;
+    box-shadow: 0px 5px 5px rgb(0, 0, 0, 0.2);
+}
+
+.recipe-card img {
+    display: block;
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+}
+
+.recipe-card h4, p {
+    padding: 0 15px;
+    color: var(--navy);
+}
+
+.recipe-card h4 {
+    margin: 20px 0;
+}
+
+.recipe-card p {
+    margin: 10px 0 20px;
+}
+
+/*no results page*/
+.no-results {
+    text-align: center;
+    margin: 100px 50px;
+}
+
+.no-results p {
+    font-size: 32px;
 }
