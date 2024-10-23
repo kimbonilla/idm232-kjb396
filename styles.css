@@ -34,9 +34,13 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'andada-pro';
 }
 
-p, a, input, button {
+p, a, ul, ol, input, button {
     font-family: 'league-spartan';
     text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -4%;
 }
 
 h1 {
@@ -72,13 +76,6 @@ h5 {
     font-weight: 700;
     line-height: .9;
     letter-spacing: -1.5%;
-}
-
-p, a, input {
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1.4;
-    letter-spacing: -4%;
 }
 
 /*help button*/
@@ -273,4 +270,28 @@ p, a, input {
 
 .no-results p {
     font-size: 32px;
+}
+
+/*individual recipe*/
+.recipe {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.recipe h2 {
+    text-align: center;
+    margin: 50px;
+}
+
+.recipe img {
+    display: block;
+    max-width: 80vw;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.2);
+}
+
+.recipe p, ul, ol{
+    margin: 50px auto;
+    padding: 0;
 }
