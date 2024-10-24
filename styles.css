@@ -283,6 +283,11 @@ h5 {
     margin: 50px;
 }
 
+.recipe h3 {
+    display: block;
+    margin: 50px 0 10px;
+}
+
 .recipe img {
     display: block;
     max-width: 80vw;
@@ -291,7 +296,13 @@ h5 {
     box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.2);
 }
 
+.recipe-info {
+    display: block;
+    margin: 0 50px;
+}
+
 .recipe p, ul, ol{
-    margin: 50px auto;
+    display: block;
+    margin: 25px auto;
     padding: 0;
 }
