@@ -269,7 +269,7 @@ header a{
 
 .help-content {
     margin: 50px auto;
-    padding: 50px;
+    padding: 25px 50px;
     width: 80%;
     background-color: var(--cream);
     border-radius: 20px;
@@ -344,6 +344,7 @@ header a{
     margin-left: -40px;
 }
 
+/*home page*/
 /*preview cards*/
 .previews {
     display: flex;
@@ -358,11 +359,12 @@ header a{
     display: block;
     width: 300px;
     height: fit-content;
+    max-width: 73.33vw;
 }
 
 .preview-card img {
     display: block;
-    width: 100%;
+    max-width: 100%;
     border-radius: 15px;
     box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.2);
 }
@@ -382,6 +384,24 @@ header a{
     box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.2);
 }
 
+/*about page*/
+.about-text {
+    display: block;
+    margin: 0 auto;
+    max-width: 850px;
+}
+
+.about-text h3 {
+    display: block;
+    margin: 50px 50px 10px;
+}
+
+.about-text p, .about-text ul {
+    display: block;
+    margin: 25px 50px;
+    padding: 0;
+}
+
 /*recipes page*/
 .recipes {
     display: flex;
@@ -394,7 +414,7 @@ header a{
 
 .recipe-card {
     display: block;
-    width: 250px;
+    width: 300px;
     height: fit-content;
     background-color: var(--light-green);
     border-radius: 15px;
@@ -407,7 +427,7 @@ header a{
     border-radius: 15px 15px 0 0;
 }
 
-.recipe-card h4, p {
+.recipe-card h4, .recipe-card p {
     padding: 0 15px;
     color: var(--navy);
 }
@@ -448,7 +468,7 @@ header a{
 
 .recipe img {
     display: block;
-    max-width: 80vw;
+    max-width: 73.33vw;
     margin: 0 auto;
     border-radius: 15px;
     box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.2);
@@ -459,7 +479,7 @@ header a{
     margin: 0 50px;
 }
 
-.recipe p, ul, ol{
+.recipe p, .recipe ul, .recipe ol{
     display: block;
     margin: 25px auto;
     padding: 0;
