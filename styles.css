@@ -338,10 +338,23 @@ header a{
     height: 40px;
 }
 
+.search button {
+    margin-left: -40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 5px 10px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .search img {
     height: 40px;
     padding: 5px;
-    margin-left: -40px;
+}
+
+.search-results h3{
+    text-align: center ;
 }
 
 /*home page*/
@@ -454,6 +467,7 @@ header a{
 .recipe {
     max-width: 850px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .recipe h2 {
@@ -468,7 +482,7 @@ header a{
 
 .recipe img {
     display: block;
-    max-width: 73.33vw;
+    max-width: 850px;
     margin: 0 auto;
     border-radius: 15px;
     box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.2);

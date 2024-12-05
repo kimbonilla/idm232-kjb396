@@ -1,3 +1,12 @@
+<?php
+// Include the database connection
+include 'include/credentials.php';
+
+// Query to fetch the first row
+$sql = "SELECT * FROM recipes LIMIT 1";
+$result = $connection->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +22,15 @@
     <header>
         <section class="top-nav">
             <div class="header-logo">
-                <a href="index.html"><img src="images/logo-dark.png" alt="Plate Palette Logo" height="50px"></a>
+                <a href="index.php"><img src="images/logo-dark.png" alt="Plate Palette Logo" height="50px"></a>
             </div>
             <input id="menu-toggle" type="checkbox">
             <label class="menu-button-container" for="menu-toggle">
             <span class="menu-button"></span>
             </label>
             <ul class="menu">
-                <li><a href="about.html">About</a></li>
-                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="recipes.php">Recipes</a></li>
             </ul>
         </section>
     </header>

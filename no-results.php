@@ -1,3 +1,12 @@
+<?php
+// Include the database connection
+include 'include/credentials.php';
+
+// Query to fetch the first row
+$sql = "SELECT * FROM recipes LIMIT 1";
+$result = $connection->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +22,15 @@
     <header>
         <section class="top-nav">
             <div class="header-logo">
-                <a href="index.html"><img src="images/logo-dark.png" alt="Plate Palette Logo" height="50px"></a>
+                <a href="index.php"><img src="images/logo-dark.png" alt="Plate Palette Logo" height="50px"></a>
             </div>
             <input id="menu-toggle" type="checkbox">
             <label class="menu-button-container" for="menu-toggle">
             <span class="menu-button"></span>
             </label>
             <ul class="menu">
-                <li><a href="about.html">About</a></li>
-                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="recipes.php">Recipes</a></li>
             </ul>
         </section>
     </header>
@@ -36,34 +45,17 @@
         </div>
     </div>
     <div class="logo">
-        <a href="index.html">
+        <a href="index.php">
         <img src="images/logo-dark.png" alt="Plate Palette Logo">
         </a>
     </div>
-    <div class="recipe">
-        <h2>Lorem Ipsum Dolor Sit Amet</h2>
-        <img src="images/chifrijo.jpeg" alt="Chifrijo">
-        <div class="recipe-info">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <h3>Ingredients</h3>
-            <ul>
-                <li>Ingredient 1</li>
-                <li>Ingredient 2</li>
-                <li>Ingredient 3</li>
-                <li>Ingredient 4</li>
-                <li>Ingredient 5</li>
-            </ul>
-            <h3>Instructions</h3>
-            <ol>
-                <li>Step 1</li>
-                <li>Step 2</li>
-                <li>Step 3</li>
-                <li>Step 4</li>
-                <li>Step 5</li>
-            </ol>
-        </div>
+    <div class="search">
+        <input type="text" name="search" placeholder="What would you like to make? ..">
+        <a href="no-results.php"><img src="images/search.svg" alt="Search"></a>
     </div>
-    <p>&nbsp;</p>
+    <div class="no-results">
+        <p>No results found.</p>
+    </div>
     <script src="index.js"></script>
 </body>
 </html>
