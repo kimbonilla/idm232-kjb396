@@ -1,27 +1,6 @@
 <?php
 // Include the database connection
 include 'include/credentials.php';
-
-// Check if a search query is submitted
-$searchQuery = isset($_GET['query']) ? trim($_GET['query']) : '';
-$searchResults = [];
-
-if ($searchQuery) {
-    // Prepare the SQL query
-    $sql = "SELECT * FROM recipes WHERE recipe_name LIKE ? OR description LIKE ?";
-    $stmt = $connection->prepare($sql);
-    $searchTerm = '%' . $searchQuery . '%';
-    $stmt->bind_param("ss", $searchTerm, $searchTerm);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    // Fetch the results
-    while ($row = $result->fetch_assoc()) {
-        $searchResults[] = $row;
-    }
-
-    $stmt->close();
-}
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +26,7 @@ if ($searchQuery) {
             </label>
             <ul class="menu">
                 <li><a href="about.php">About</a></li>
-                <li><a href="recipes.php">Recipes</a></li>
+                <li><a href="recipes.php">All Recipes</a></li>
             </ul>
         </section>
     </header>
@@ -67,30 +46,14 @@ if ($searchQuery) {
         </a>
     </div>
     <div class="search">
-    <form method="GET">
+    <!--<form method="GET">
         <input type="text" name="query" placeholder="What would you like to make? .." value="<?php echo isset($_GET['query']) ? htmlspecialchars($_GET['query']) : ''; ?>">
         <button type="submit">
             <img src="images/search.svg" alt="Search">
         </button>
-    </form>
+    </form>-->
 </div>
     <div class="recipes">
-    <?php if ($searchQuery): ?>
-    <h2>Search Results for "<?php echo htmlspecialchars($searchQuery); ?>"</h2>
-    <?php if (count($searchResults) > 0): ?>
-        <ul class="search-results">
-            <?php foreach ($searchResults as $recipe): ?>
-                <li>
-                    <a href="recipe.php?id=<?php echo $recipe['id']; ?>">
-                        <?php echo utf8_encode($recipe['recipe_name']); ?>
-                    </a>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    <?php else: ?>
-        <p>No results found for "<?php echo htmlspecialchars($searchQuery); ?>"</p>
-    <?php endif; ?>
-<?php endif; ?>
         <?php
         // Fetch recipes from the database
         $sql = "SELECT id, recipe_name, cuisine, cook_time, servings, dish_img FROM recipes";

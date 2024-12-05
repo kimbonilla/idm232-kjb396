@@ -16,3 +16,9 @@ window.addEventListener('click', (event) => {
     helpModal.style.display = 'none';
     }
 });
+
+// css fixes
+const searchH3 = document.querySelector('.search-results h3');
+searchH3.forEach(h3 => {
+    h3.style.textAlign = 'center';
+});

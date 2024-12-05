@@ -30,7 +30,7 @@ $result = $connection->query($sql);
             </label>
             <ul class="menu">
                 <li><a href="about.php">About</a></li>
-                <li><a href="recipes.php">Recipes</a></li>
+                <li><a href="recipes.php">All Recipes</a></li>
             </ul>
         </section>
     </header>

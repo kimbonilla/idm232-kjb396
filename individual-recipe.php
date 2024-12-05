@@ -30,7 +30,7 @@ $result = $connection->query($sql);
             </label>
             <ul class="menu">
                 <li><a href="about.php">About</a></li>
-                <li><a href="recipes.php">Recipes</a></li>
+                <li><a href="recipes.php">All Recipes</a></li>
             </ul>
         </section>
     </header>
@@ -63,8 +63,8 @@ $result = $connection->query($sql);
 
                 // Display recipe details
                 echo '<div class="recipe_img">';
-                $dishImg = utf8_encode($recipe['dish_img']);
                 echo '<h2>' . utf8_encode($recipe['recipe_name']) . '</h2>';
+                $dishImg = utf8_encode($recipe['dish_img']);
                 echo '<img src="pics/' . $dishImg . '" alt="' . utf8_encode($recipe["recipe_name"]) . '"';
                 echo '</div>';
                 echo '<p>Cuisine: ' . utf8_encode($recipe['cuisine']) . '</p>';
@@ -72,7 +72,10 @@ $result = $connection->query($sql);
                 echo '<p>Servings: ' . utf8_encode($recipe['servings']) . '</p>';
                 echo '<p>' . utf8_encode($recipe['description']) . '</p>';
                 echo '<h3>Ingredients</h3>';
-
+                if (!empty($recipe['ingredients_img'])) {
+                    $ingredientsImg = htmlspecialchars($recipe['ingredients_img']);
+                    echo '<img src="pics/' . $ingredientsImg . '" alt="Ingredients" height="200px">';
+                }
                 // Split ingredients by '*' delimiter and display as list items
                 $ingredients = explode('*', $recipe['ingredients']);
                 echo '<ul>';
@@ -82,6 +85,17 @@ $result = $connection->query($sql);
                     }
                 }
                 echo '</ul>';
+
+                 // Steps
+                echo '<h3>Steps</h3>';
+                if (!empty($recipe['steps_img'])) {
+                    $stepsImg = explode('*', $recipe['steps_img']);
+                    foreach ($stepsImg as $stepImg) {
+                        if (!empty(trim($stepImg))) {
+                            echo '<img src="pics/' . htmlspecialchars($stepImg) . '" alt="Step" height="200px">';
+                        }
+                    }
+                }
 
                 $steps = explode('*', $recipe['steps']); // Split steps by '*'
                 echo '<ol>';
