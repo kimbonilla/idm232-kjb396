@@ -1,11 +1,6 @@
 <?php
 // Include the database connection
 include 'include/credentials.php';
-
-// Check if the query was successful
-if (!$result) {
-    die("Error executing query: " . $connection->error);
-}
 ?>
 
 <!DOCTYPE html>

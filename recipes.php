@@ -75,7 +75,6 @@ if (!$connection) {
                 echo '<p>' . convertToUTF8($row["cuisine"]) . ' | ' . $row["cook_time"] . ' | ' . $row["servings"] . '</p>';
                 echo '</article>';
             }
-            $stmt->close();
         } else {
             echo '<div class="no-results">
             <p>No results found.</p>

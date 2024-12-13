@@ -2,11 +2,6 @@
 // Include the database connection
 include 'include/credentials.php';
 
-// Check if the query was successful
-if (!$result) {
-    die("Error executing query: " . $connection->error);
-}
-
 // Check if a search query is submitted
 $searchQuery = isset($_GET['query']) ? trim($_GET['query']) : '';
 $searchResults = [];
@@ -30,6 +25,11 @@ if ($searchQuery) {
     while ($row = $result->fetch_assoc()) {
         $searchResults[] = $row;
     }
+
+    // Check if the query was successful
+if (!$result) {
+    die("Error executing query: " . $connection->error);
+}
 
     $stmt->close();
 }
@@ -100,7 +100,6 @@ if ($searchQuery) {
                 echo '<p>' . convertToUTF8($recipe["cuisine"]) . ' | ' . $recipe["cook_time"] . ' | ' . $recipe["servings"] . '</p>';
                 echo '</article>';
             }
-            $stmt->close();
         } else {
             echo '<div class="no-results">
             <p>No results found for "' . htmlspecialchars($searchQuery) . '"</p>
