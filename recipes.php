@@ -1,6 +1,11 @@
 <?php
 // Include the database connection
 include 'include/credentials.php';
+
+// Check the database connection
+if (!$connection) {
+    die('Connection failed: ' . mysqli_connect_error());
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,8 +16,6 @@ include 'include/credentials.php';
     <link rel="stylesheet" href="styles.css">
     <title>Plates Palette</title>
     <link rel="icon" href="images/chef-dark.png">
-    <link rel="icon" href="images/chef-dark.png" media="(prefers-color-scheme: light)">
-    <link rel="icon" href="images/chef-light.png" media="(prefers-color-scheme: dark)">
 </head>
 <body>
     <header>
@@ -58,7 +61,9 @@ include 'include/credentials.php';
         // Fetch recipes from the database
         $sql = "SELECT id, recipe_name, cuisine, cook_time, servings, dish_img FROM recipes";
         $result = $connection->query($sql);
-
+        if (!$result) {
+            die('Query failed: ' . $connection->error);
+        }
         if ($result && $result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $dishImg = convertToUTF8($row['dish_img']);
@@ -70,6 +75,7 @@ include 'include/credentials.php';
                 echo '<p>' . convertToUTF8($row["cuisine"]) . ' | ' . $row["cook_time"] . ' | ' . $row["servings"] . '</p>';
                 echo '</article>';
             }
+            $stmt->close();
         } else {
             echo '<div class="no-results">
             <p>No results found.</p>

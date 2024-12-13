@@ -11,8 +11,6 @@ include 'include/credentials.php';
     <link rel="stylesheet" href="styles.css">
     <title>About</title>
     <link rel="icon" href="images/chef-dark.png">
-    <link rel="icon" href="images/chef-dark.png" media="(prefers-color-scheme: light)">
-    <link rel="icon" href="images/chef-light.png" media="(prefers-color-scheme: dark)">
 </head>
 <body>
     <header>

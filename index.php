@@ -2,6 +2,11 @@
 // Include the database connection
 include 'include/credentials.php';
 
+// Check if the query was successful
+if (!$result) {
+    die("Error executing query: " . $connection->error);
+}
+
 // Check if a search query is submitted
 $searchQuery = isset($_GET['query']) ? trim($_GET['query']) : '';
 $searchResults = [];
@@ -10,6 +15,12 @@ if ($searchQuery) {
     // Prepare the SQL query
     $sql = "SELECT * FROM recipes WHERE recipe_name LIKE ? OR recipe_with LIKE ? OR cuisine LIKE ? OR category LIKE ? OR description LIKE ? OR ingredients LIKE ?";
     $stmt = $connection->prepare($sql);
+
+    // Check if the statement was prepared successfully
+    if ($stmt === false) {
+        die('MySQL prepare error: ' . $connection->error);
+    }
+
     $searchTerm = '%' . $searchQuery . '%';
     $stmt->bind_param("ssssss", $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm);
     $stmt->execute();
@@ -32,8 +43,6 @@ if ($searchQuery) {
     <link rel="stylesheet" href="styles.css">
     <title>Plates Palette</title>
     <link rel="icon" href="images/chef-dark.png">
-    <link rel="icon" href="images/chef-dark.png" media="(prefers-color-scheme: light)">
-    <link rel="icon" href="images/chef-light.png" media="(prefers-color-scheme: dark)">
 </head>
 
 <body>
@@ -85,12 +94,13 @@ if ($searchQuery) {
                 $dishImg = convertToUTF8($recipe['dish_img']);
                 echo '<article class="recipe-card">';
                 echo '<a href="individual-recipe.php?id=' . $recipe["id"] . '">';
-                echo '<img src="pics/' . $dishImg . '" alt="' . convertToUTF8($recipe["recipe_name"]) . '">';
+                echo '<img src="pics/' . convertToUTF8($dishImg) . '" alt="' . convertToUTF8($recipe["recipe_name"]) . '">';
                 echo '<h4>' . convertToUTF8($recipe["recipe_name"]) . '</h4>';
                 echo '</a>';
                 echo '<p>' . convertToUTF8($recipe["cuisine"]) . ' | ' . $recipe["cook_time"] . ' | ' . $recipe["servings"] . '</p>';
                 echo '</article>';
             }
+            $stmt->close();
         } else {
             echo '<div class="no-results">
             <p>No results found for "' . htmlspecialchars($searchQuery) . '"</p>

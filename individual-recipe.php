@@ -2,9 +2,10 @@
 // Include the database connection
 include 'include/credentials.php';
 
-// Query to fetch the first row
-$sql = "SELECT * FROM recipes LIMIT 1";
-$result = $connection->query($sql);
+// Check if the query was successful
+if (!$result) {
+    die("Error executing query: " . $connection->error);
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,8 +16,6 @@ $result = $connection->query($sql);
     <link rel="stylesheet" href="styles.css">
     <title>Plates Palette</title>
     <link rel="icon" href="images/chef-dark.png">
-    <link rel="icon" href="images/chef-dark.png" media="(prefers-color-scheme: light)">
-    <link rel="icon" href="images/chef-light.png" media="(prefers-color-scheme: dark)">
 </head>
 <body>
     <header>
