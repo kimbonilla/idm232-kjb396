@@ -1,10 +1,6 @@
 <?php
 // Include the database connection
 include 'include/credentials.php';
-
-// Query to fetch the first row
-$sql = "SELECT * FROM recipes LIMIT 1";
-$result = $connection->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +37,7 @@ $result = $connection->query($sql);
         <div class="help-content">
             <button class="close-button">X</button>
             <img src="images/logo-dark.png" alt="Plate Palette Logo">
-            <p>This is where the help information will go. For now, click on the categories on the home page to reach the results page. The "no results" page is accessible by clicking the search icon no matter what input is given. The Plates Palette logo will always bring you back to the homepage.</p>
+            <p>Welcome to Plates Palette! Go to the "All Recipes" page to view all of our recipes or use the search bar if you already have something in mind. Enjoy your meal!</p>
         </div>
     </div>
     <div class="about-text">

@@ -37,7 +37,7 @@ include 'include/credentials.php';
         <div class="help-content">
             <button class="close-button">X</button>
             <img src="images/logo-dark.png" alt="Plate Palette Logo">
-            <p>This is where the help information will go. For now, click on the categories on the home page to reach the results page. The "no results" page is accessible by clicking the search icon no matter what input is given. The Plates Palette logo will always bring you back to the homepage.</p>
+            <p>Welcome to Plates Palette! Go to the "All Recipes" page to view all of our recipes or use the search bar if you already have something in mind. Enjoy your meal!</p>
         </div>
     </div>
     <div class="logo">
@@ -45,28 +45,29 @@ include 'include/credentials.php';
         <img src="images/logo-dark.png" alt="Plate Palette Logo">
         </a>
     </div>
-    <div class="search">
-    <!--<form method="GET">
-        <input type="text" name="query" placeholder="What would you like to make? .." value="<?php echo isset($_GET['query']) ? htmlspecialchars($_GET['query']) : ''; ?>">
-        <button type="submit">
-            <img src="images/search.svg" alt="Search">
-        </button>
-    </form>-->
-</div>
+    <div class="search" >
+        <form method="GET" action="index.php">
+            <input type="text" name="query" placeholder="What would you like to make? .." value="<?php echo isset($_GET['query']) ? htmlspecialchars($_GET['query']) : ''; ?>">
+            <button type="submit">
+                <img src="images/search.svg" alt="Search">
+            </button>
+        </form>
+    </div>
     <div class="recipes">
-        <?php
+    <?php   
         // Fetch recipes from the database
         $sql = "SELECT id, recipe_name, cuisine, cook_time, servings, dish_img FROM recipes";
         $result = $connection->query($sql);
+
         if ($result && $result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $dishImg = utf8_encode($row['dish_img']);
+                $dishImg = convertToUTF8($row['dish_img']);
                 echo '<article class="recipe-card">';
                 echo '<a href="individual-recipe.php?id=' . $row["id"] . '">';
-                echo '<img src="pics/' . $dishImg . '" alt="' . utf8_encode($row["recipe_name"]) . '">';
-                echo '<h4>' . utf8_encode($row["recipe_name"]) . '</h4>';
+                echo '<img src="pics/' . $dishImg . '" alt="' . convertToUTF8($row["recipe_name"]) . '">';
+                echo '<h4>' . convertToUTF8($row["recipe_name"]) . '</h4>';
                 echo '</a>';
-                echo '<p>' . utf8_encode($row["cuisine"]) . ' | ' . $row["cook_time"] . ' | ' . $row["servings"] . '</p>';
+                echo '<p>' . convertToUTF8($row["cuisine"]) . ' | ' . $row["cook_time"] . ' | ' . $row["servings"] . '</p>';
                 echo '</article>';
             }
         } else {
@@ -74,7 +75,7 @@ include 'include/credentials.php';
             <p>No results found.</p>
             </div>';
         }
-        ?>
+    ?>
     </div>
     <p>&nbsp;</p>
     <script src="index.js"></script>

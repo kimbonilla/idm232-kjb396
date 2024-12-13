@@ -8,10 +8,10 @@ $searchResults = [];
 
 if ($searchQuery) {
     // Prepare the SQL query
-    $sql = "SELECT * FROM recipes WHERE recipe_name LIKE ? OR description LIKE ?";
+    $sql = "SELECT * FROM recipes WHERE recipe_name LIKE ? OR recipe_with LIKE ? OR cuisine LIKE ? OR category LIKE ? OR description LIKE ? OR ingredients LIKE ?";
     $stmt = $connection->prepare($sql);
     $searchTerm = '%' . $searchQuery . '%';
-    $stmt->bind_param("ss", $searchTerm, $searchTerm);
+    $stmt->bind_param("ssssss", $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm, $searchTerm);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -59,7 +59,7 @@ if ($searchQuery) {
         <div class="help-content">
             <button class="close-button">X</button>
             <img src="images/logo-dark.png" alt="Plate Palette Logo">
-            <p>This is where the help information will go. For now, click on the categories on the home page to reach the results page. The "no results" page is accessible by clicking the search icon no matter what input is given. The Plates Palette logo will always bring you back to the homepage.</p>
+            <p>Welcome to Plates Palette! Go to the "All Recipes" page to view all of our recipes or use the search bar if you already have something in mind. Enjoy your meal!</p>
         </div>
     </div>
     <div class="logo">
@@ -82,22 +82,23 @@ if ($searchQuery) {
         echo '<div class="recipes">';
         if (count($searchResults) > 0) {
             foreach ($searchResults as $recipe) {
-                $dishImg = utf8_encode($recipe['dish_img']);
+                $dishImg = convertToUTF8($recipe['dish_img']);
                 echo '<article class="recipe-card">';
                 echo '<a href="individual-recipe.php?id=' . $recipe["id"] . '">';
-                echo '<img src="pics/' . $dishImg . '" alt="' . utf8_encode($recipe["recipe_name"]) . '">';
-                echo '<h4>' . utf8_encode($recipe["recipe_name"]) . '</h4>';
+                echo '<img src="pics/' . $dishImg . '" alt="' . convertToUTF8($recipe["recipe_name"]) . '">';
+                echo '<h4>' . convertToUTF8($recipe["recipe_name"]) . '</h4>';
                 echo '</a>';
-                echo '<p>' . utf8_encode($recipe["cuisine"]) . ' | ' . $recipe["cook_time"] . ' | ' . $recipe["servings"] . '</p>';
+                echo '<p>' . convertToUTF8($recipe["cuisine"]) . ' | ' . $recipe["cook_time"] . ' | ' . $recipe["servings"] . '</p>';
                 echo '</article>';
             }
         } else {
             echo '<div class="no-results">
-            <p>No results found for "' . htmlspecialchars($searchQuery) . '"</p>                </div>';
+            <p>No results found for "' . htmlspecialchars($searchQuery) . '"</p>
+            </div>';
         }
         echo '</div>';
     }
-    ?>
+    ?>    
     </div>
     <!-- <div class="previews">
     <a href="recipes.php">
